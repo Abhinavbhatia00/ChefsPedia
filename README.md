@@ -4,6 +4,10 @@ ChefsPedia is a responsive recipe-discovery web application built with React. It
 
 The application uses [TheMealDB API](https://www.themealdb.com/api.php) to fetch live recipe data.
 
+## Live Demo
+
+[View ChefsPedia live](https://chefspedia.netlify.app/)
+
 ## Features
 
 - Search recipes by meal name
@@ -104,41 +108,6 @@ ChefsPedia uses Tailwind CSS breakpoints to adapt its layout:
 | `/recipes/:id` | Recipe details |
 | `/settings` | Theme settings |
 
-## Installation
-
-Clone the repository:
-
-```bash
-git clone <your-repository-url>
-cd <your-project-folder>
-```
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open the local URL shown in the terminal, usually:
-
-```text
-http://localhost:5173
-```
-
-## Required Packages
-
-If any dependency is missing, install the packages with:
-
-```bash
-npm install axios react-router-dom lucide-react react-slick slick-carousel
-```
-
 ## Project Structure
 
 ```text
@@ -223,4 +192,3 @@ Built as a frontend-development project using React, Tailwind CSS, and a public 
 - [TheMealDB](https://www.themealdb.com/) for recipe data
 - [Lucide](https://lucide.dev/) for icons
 - [React Slick](https://react-slick.neostack.com/) for recipe sliders
-
