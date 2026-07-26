@@ -2,6 +2,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import AllRecipes from "./components/AllRecipes";
 import Footer from "./components/Footer";
+import Favourites from "./components/Favourites";
 import Global from "./components/Global";
 import Homeview from "./components/Homeview";
 import ImageSearch from "./components/ImageSearch";
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/search" element={<Searchview />} />
         <Route path="/recipes" element={<AllRecipesPage />} />
         <Route path="/recipes/:id" element={<DetailsPage />} />
+        <Route path="/favourites" element={<Favourites />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </>

@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Bolt, ChefHat, Search } from "lucide-react";
+import { Bolt, ChefHat, Heart, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
 
 const Navbar = ({ onSearch }) => {
   const [input, setInput] = useState("");
+  const { favorites } = useFavorites();
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -38,6 +40,19 @@ const Navbar = ({ onSearch }) => {
             />
           </div>
         </form>
+
+        <Link
+          to="/favourites"
+          aria-label="Open favourites"
+          className="relative shrink-0 rounded-lg p-2 text-black hover:bg-orange-100 hover:text-orange-500 dark:text-white dark:hover:bg-gray-800"
+        >
+          <Heart strokeWidth={1.5} className="h-6 w-6" />
+          {favorites.length > 0 && (
+            <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-400 px-1 text-[10px] font-bold text-white">
+              {favorites.length}
+            </span>
+          )}
+        </Link>
 
         <Link
           to="/settings"
