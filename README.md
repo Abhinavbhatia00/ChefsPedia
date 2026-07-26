@@ -1,194 +1,292 @@
 # ChefsPedia
 
-ChefsPedia is a responsive recipe-discovery web application built with React. It allows users to browse meals, search recipes by name, filter recipes by country, view complete cooking details, and switch between light and dark themes.
-
-The application uses [TheMealDB API](https://www.themealdb.com/api.php) to fetch live recipe data.
+ChefsPedia is a modern and responsive recipe discovery application built with React. Users can search for meals, browse recipes by cuisine, view detailed cooking instructions, switch between light and dark themes, and save their favourite recipes.
 
 ## Live Demo
 
-[View ChefsPedia live](https://chefspedia.netlify.app/)
+Live Website: https://chefspedia.netlify.app/
+
+GitHub Repository: https://github.com/Abhinavbhatia00/ChefsPedia
 
 ## Features
 
-- Search recipes by meal name
-- Filter recipes by country or cuisine
-- Browse a collection of available recipes
-- View recipe images, ingredients, measurements, and cooking instructions
-- Watch recipe videos through YouTube links when available
-- Open the original recipe source when provided
-- Responsive recipe sliders
-- Dedicated recipe details pages
-- Light and dark themes
-- Saved theme preference using `localStorage`
-- Responsive layouts for phones, tablets, and desktop screens
-- Loading, error, empty-result, and recipe-not-found states
-- Sticky navigation bar and cuisine navigation
-- Smooth scrolling back to the top
+### Recipe Search
+
+- Search for recipes by meal name
+- Search using the navbar or homepage search bar
+- Display results on a dedicated search page
+- Handle empty and invalid searches
+
+### Browse Recipes
+
+- Browse a collection of recipes
+- View recipes using responsive cards
+- Open a separate details page for every recipe
+- Navigate through recipe sliders
+
+### Cuisine Filtering
+
+Users can filter recipes by cuisine, including:
+
+- American
+- British
+- Canadian
+- Chinese
+- Indian
+- Italian
+- Mexican
+- Russian
+- Thai
+
+### Favourite Recipes
+
+- Add recipes to favourites
+- Remove recipes from favourites
+- View saved recipes on a dedicated favourites page
+- See the number of saved recipes in the navbar
+- Save favourites using localStorage
+- Keep favourites after refreshing the website
+
+### Recipe Details
+
+The recipe details page displays:
+
+- Recipe name
+- Recipe image
+- Category and cuisine
+- Ingredients and measurements
+- Cooking instructions
+- YouTube recipe video
+- Original recipe source when available
+
+### Light and Dark Mode
+
+- Dedicated settings page
+- Switch between light and dark themes
+- Theme managed using React Context API
+- Theme preference saved in localStorage
+- Selected theme remains active after refreshing
+
+### Responsive Design
+
+ChefsPedia is responsive across:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+The navbar, hero section, search bars, recipe cards, sliders, details page, favourites page, and footer adjust according to the screen size.
+
+### Loading and Error Handling
+
+The application handles:
+
+- API loading states
+- Failed API requests
+- Missing recipes
+- Empty search results
+- Invalid recipe IDs
 
 ## Tech Stack
 
+### Frontend
+
 - React
-- Vite
-- React Router DOM
+- JavaScript
+- JSX
 - Tailwind CSS
+- HTML
+
+### Libraries
+
+- React Router DOM
 - Axios
 - React Slick
 - Slick Carousel
 - Lucide React
+
+### State Management and Storage
+
+- React Context API
+- React useState
+- React useEffect
+- Browser localStorage
+
+### API and Tools
+
 - TheMealDB API
+- Vite
+- Git
+- GitHub
+- Netlify
 
-## API Usage
+## API Integration
 
-ChefsPedia fetches recipe data from TheMealDB:
+ChefsPedia uses TheMealDB API to retrieve recipe data.
 
-```text
-https://www.themealdb.com/api/json/v1/1/
-```
+API Documentation: https://www.themealdb.com/api.php
 
-The main endpoints used are:
+The application uses API endpoints for:
 
-| Purpose | Endpoint |
-| --- | --- |
-| Search by meal name | `search.php?s={name}` |
-| Filter by country | `filter.php?a={area}` |
-| Filter by ingredient | `filter.php?i={ingredient}` |
-| Filter by first letter | `search.php?f={letter}` |
-| Get recipe details | `lookup.php?i={id}` |
-
-## Search Flow
-
-Both the navbar and hero-section search bars use the same search function.
-
-When a user searches for a meal, the application navigates to:
-
-```text
-/search?q=chicken
-```
-
-The search page reads the `q` value, requests matching meals from TheMealDB, and displays every result using the reusable `RecipeCard` component.
-
-Country buttons use the same search-results page:
-
-```text
-/search?area=Indian
-```
-
-The page detects the `area` parameter and fetches recipes belonging to that country.
-
-## Theme System
-
-The application uses React Context to share the selected theme across every component.
-
-Users can open the settings page and choose:
-
-- Light theme
-- Dark theme
-
-The selected value is saved in `localStorage`, so the theme remains selected after refreshing or reopening the website.
-
-## Responsive Design
-
-ChefsPedia uses Tailwind CSS breakpoints to adapt its layout:
-
-- Navigation elements resize on smaller screens
-- Country buttons become horizontally scrollable
-- Recipe grids change their column count based on screen width
-- Sliders display fewer cards on tablets and phones
-- The recipe-details layout changes from side-by-side to stacked
-- Text sizes, spacing, and padding decrease on smaller screens
-
-## Routes
-
-| Route | Page |
-| --- | --- |
-| `/` | Home page |
-| `/search?q={name}` | Meal-name search results |
-| `/search?area={country}` | Country-based recipe results |
-| `/recipes` | All recipes |
-| `/recipes/:id` | Recipe details |
-| `/settings` | Theme settings |
+- Searching recipes by name
+- Filtering recipes by cuisine
+- Filtering recipes by ingredient
+- Loading recipe categories
+- Fetching complete recipe details using a meal ID
 
 ## Project Structure
 
-```text
-src/
-├── assets/
-├── components/
-│   ├── AllRecipes.jsx
-│   ├── Footer.jsx
-│   ├── Global.jsx
-│   ├── Homeview.jsx
-│   ├── ImageSearch.jsx
-│   ├── Navbar.jsx
-│   ├── RecipeCard.jsx
-│   ├── RecipeDetailedView.jsx
-│   ├── RecipeSlider.jsx
-│   ├── Searchview.jsx
-│   ├── Settings.jsx
-│   ├── TrendingRecipe.jsx
-│   └── useFetch.js
-├── context/
-│   └── ThemeContext.jsx
-├── App.jsx
-├── index.css
-└── main.jsx
-```
+    src/
+    ├── assets/
+    │   └── hero.png
+    │
+    ├── components/
+    │   ├── AllRecipes.jsx
+    │   ├── Favourites.jsx
+    │   ├── Footer.jsx
+    │   ├── Global.jsx
+    │   ├── Homeview.jsx
+    │   ├── ImageSearch.jsx
+    │   ├── Navbar.jsx
+    │   ├── RecipeCard.jsx
+    │   ├── RecipeDetailedView.jsx
+    │   ├── RecipeSlider.jsx
+    │   ├── Searchview.jsx
+    │   ├── Settings.jsx
+    │   ├── TrendingRecipe.jsx
+    │   └── useFetch.js
+    │
+    ├── context/
+    │   ├── FavoritesContext.jsx
+    │   └── ThemeContext.jsx
+    │
+    ├── App.jsx
+    ├── index.css
+    └── main.jsx
 
-## Main Components
+## Application Routes
 
-### `useFetch`
+| Route | Page | Description |
+|---|---|---|
+| `/` | Home | Displays the hero section, cuisines and recipe sliders |
+| `/search?q=meal` | Search Results | Displays recipes matching the search |
+| `/recipes` | All Recipes | Displays the recipe collection |
+| `/recipes/:id` | Recipe Details | Displays information about one recipe |
+| `/favourites` | Favourites | Displays recipes saved by the user |
+| `/settings` | Settings | Allows the user to change the theme |
 
-A reusable custom hook responsible for:
+## Custom Data-Fetching Hook
 
-- Fetching API data with Axios
-- Tracking loading state
-- Handling request errors
-- Returning fetched data to components
+The project uses a custom `useFetch` hook to handle API requests.
 
-### `RecipeCard`
+The hook manages:
 
-A reusable card that displays a meal image and name. Clicking a card opens its dedicated recipe-details page.
+- `data` — stores the API response
+- `loading` — indicates whether the request is running
+- `error` — stores an error message if the request fails
 
-### `Searchview`
+This prevents repeated Axios, loading, and error-handling code across different components.
 
-Reads search parameters from the URL and displays either:
+## Favourites System
 
-- Recipes matching a meal name
-- Recipes belonging to a selected country
+The favourites system uses React Context API to share saved recipes across the application.
 
-### `RecipeDetailedView`
+It provides:
 
-Fetches one recipe using its ID and displays:
+- `favorites` — contains saved recipes
+- `toggleFavorite()` — adds or removes a recipe
+- `isFavorite()` — checks whether a recipe is already saved
 
-- Recipe image and name
-- Category and country
-- Ingredients and measurements
-- Cooking instructions
-- YouTube video link
-- Original recipe source
+The favourites array is stored in localStorage whenever it changes.
 
-### `ThemeContext`
+This is currently a frontend-only system. Favourites are stored on the user's browser and do not synchronise between different devices.
 
-Stores the current theme, updates the document’s `dark` class, and saves the selected theme in the browser.
+## Theme Management
+
+The website theme is managed using ThemeContext.
+
+ThemeContext allows every component to access and change the current theme without passing theme props manually.
+
+The selected theme is stored in localStorage so it remains active after refreshing or reopening the website.
+
+## Main Challenges Solved
+
+### Handling API Data Before Loading
+
+API data initially starts as null. Optional chaining and fallback arrays are used to prevent the application from crashing before the data arrives.
+
+### Preventing Blank Screens
+
+Loading checks, error checks, missing-data checks, and fallback values were added to prevent runtime errors from making the website blank.
+
+### Sharing Global State
+
+React Context API is used to share theme and favourites data between components.
+
+### Persistent User Preferences
+
+Browser localStorage is used to preserve the selected theme and saved recipes.
+
+### Dynamic Recipe Pages
+
+React Router and URL parameters are used to create a separate page for every recipe.
+
+### Multiple Search Bars
+
+Both search bars use the same search function, keeping their behaviour consistent.
+
+### Responsive Layout
+
+Tailwind CSS breakpoints, flexible containers, responsive grids, and mobile-specific layouts are used throughout the website.
+
+### Deployment
+
+The project is deployed through Netlify and connected to GitHub for automatic deployments.
+
+## What I Learned
+
+Building ChefsPedia helped me understand and practise:
+
+- React components
+- Reusable component development
+- Props and state
+- Controlled inputs
+- React hooks
+- Custom hooks
+- Context API
+- Axios API requests
+- Asynchronous JavaScript
+- Conditional rendering
+- Array mapping and filtering
+- Optional chaining
+- Dynamic routing
+- URL parameters
+- Search query parameters
+- Browser localStorage
+- Responsive Tailwind CSS
+- Git and GitHub
+- Netlify deployment
+- Debugging React blank-page errors
 
 ## Future Improvements
 
-- Add favourites and saved recipes
-- Add filters for ingredients and categories
-- Add pagination or lazy loading
-- Add user authentication
-- Improve accessibility and keyboard navigation
-- Replace remote hero images with locally hosted assets
-- Add automated tests
+- User registration and login
+- Account-based favourites
+- Favourite synchronisation across devices
+- Weekly meal planner
+- Shopping list generation
+- Nutrition and calorie information
+- Recipe ratings and reviews
+- Custom recipe creation
+- Backend and database integration
 
 ## Author
 
-**Abhinav Bhatia**
+Abhinav Bhatia
 
-Built as a frontend-development project using React, Tailwind CSS, and a public recipe API.
+GitHub: https://github.com/Abhinavbhatia00
 
-## Acknowledgements
+LinkedIn: https://www.linkedin.com/in/abhinavb00/
 
-- [TheMealDB](https://www.themealdb.com/) for recipe data
-- [Lucide](https://lucide.dev/) for icons
-- [React Slick](https://react-slick.neostack.com/) for recipe sliders
+Email: abhinavbhatiaofficial@gmail.com
